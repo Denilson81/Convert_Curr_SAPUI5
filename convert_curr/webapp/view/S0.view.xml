@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="pina.convertcurr.controller.S0"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					
+				 <VBox justifyContent="Start" class="sapUiSmallMargin">
+
+                    	<form:SimpleForm layout="ResponsiveGridLayout"> 
+							<form:content>  
+								<core:Title text="Da Moeda" />
+									<Label text="Selecionar Moeda" labelFor="currFrom" />   
+								   
+									<ComboBox showSecondaryValues= "true" id="currFrom" items="{ path: 'oMoedas>/' , sorter: { path: 'oMoedas>country' }  }" >
+										<core:ListItem  key="{oMoedas>curr}" text="{oMoedas>country} - {oMoedas>curr}" />
+									</ComboBox>
+                   
+                				<core:Title text="Para Moeda" />
+				  					<Label text="Selecionar Moeda" labelFor="currTo" />
+
+									<ComboBox showSecondaryValues= "true"  id="currTo" items="{ path: 'oMoedas>/' , sorter: { path: 'oMoedas>country' }  }">
+										<core:ListItem key="{oMoedas>curr}" text="{oMoedas>country} - {oMoedas>curr}"/>
+									</ComboBox>
+
+                            </form:content>  
+                        </form:SimpleForm>
+
+						<form:SimpleForm layout="ResponsiveGridLayout"> 
+							<form:content>  
+								<core:Title text="Valor para conversão" />	
+								    <Label text="De" labelFor="valorDe" />	
+									<Input id="valorDe" type="Number"/>	
+
+								<core:Title text="Valor convertido" />	
+								    <Label text="Para" labelFor="valorPara" />		
+									<Input id="valorPara" editable="false" type="Number" >	
+
+						   			</Input>
+                            </form:content>  
+                        </form:SimpleForm>
+
+                    </VBox>
+					<HBox justifyContent="Start" class="sapUiSmallMargin" >
+				        <DatePicker  id="date" >
+        					<layoutData>
+                                <layout:GridData span="L3 M9 S12"/>
+						  	</layoutData>
+						</DatePicker>	
+					    
+					</HBox>
+                    <VBox justifyContent="Start" class="sapUiSmallMargin">
+					    <Button text="Converter" icon="sap-icon://lead" press="onConverter"/>
+					</VBox>
+					 
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
